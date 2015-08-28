@@ -3,6 +3,8 @@ package barqsoft.footballscores.widget;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import barqsoft.footballscores.R;
@@ -13,11 +15,10 @@ import barqsoft.footballscores.R;
 public class StaticAppWidgetProvider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // Perform this loop procedure for each Today widget
-         for (int appWidgetId : appWidgetIds) {
-             int layoutId = R.layout.static_widget;
-             RemoteViews views = new RemoteViews(context.getPackageName(), layoutId);
-             appWidgetManager.updateAppWidget(appWidgetId, views);
-         }
+        context.startService(new Intent(context, StaticWidgetIntentService.class));
+    }
+
+    public static void updateAppWidgets(Context context, AppWidgetManager appWidgetManager) {
+        context.startService(new Intent(context, StaticWidgetIntentService.class));
     }
 }

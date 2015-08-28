@@ -35,15 +35,24 @@
         </activity>
         <service android:name=".service.myFetchService" />
 
+        <!-- Static Widget -->
         <receiver android:name=".widget.StaticAppWidgetProvider"
             android:label="@string/title_static_widget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="barqsoft.footballscores.ACTION_DATA_UPDATED" />
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/static_appwidget_info"/>
         </receiver>
+        <service android:name=".widget.StaticWidgetIntentService" />
+        <activity android:name=".widget.StaticAppWidgetConfigure">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
