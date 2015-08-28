@@ -74,7 +74,6 @@ public class StaticAppWidgetConfigure extends Activity {
 
         mSpinner = (Spinner) findViewById(R.id.select_match_spinner);
 
-        //TODO add continue button to display
         final Button continueButton = (Button) findViewById(R.id.continue_button);
 
         continueButton.setOnClickListener(new View.OnClickListener() {
@@ -124,8 +123,6 @@ public class StaticAppWidgetConfigure extends Activity {
 
             while (!data.isAfterLast())
             {
-                Log.v(LOG_TAG,data.getString(COL_HOME) + " vs " + data.getString(COL_AWAY));
-                Log.v(LOG_TAG,"Match id: " + data.getInt(COL_ID));
                 mMatchList.add(data.getString(COL_HOME) + " vs " + data.getString(COL_AWAY));
                 mIdList.add(data.getInt(COL_ID));
                 data.moveToNext();
@@ -149,7 +146,6 @@ public class StaticAppWidgetConfigure extends Activity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.v(LOG_TAG,"onNothingSelected");
                 int id = mIdList.get(0);
                 saveIdToSharedPrefs(getApplicationContext(), id, mAppWidgetId);
                 return;
@@ -164,7 +160,6 @@ public class StaticAppWidgetConfigure extends Activity {
                         context.getString(R.string.widget_prefs_name),MODE_PRIVATE).edit();
         editor.putInt(context.getString(R.string.pref_match_id_widget_) + appWidgetId, id);
         editor.apply();
-        Log.v(LOG_TAG,"Match_id prefs for " + appWidgetId + ": " + getIdFromSharedPrefs(context,appWidgetId));
     }
 
     static int getIdFromSharedPrefs(Context context, int appWidgetId) {
