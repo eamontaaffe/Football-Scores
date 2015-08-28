@@ -53,6 +53,20 @@
             </intent-filter>
         </activity>
 
+        <!-- Collection Widget -->
+        <receiver android:name=".widget.CollectionAppWidgetProvider"
+            android:label="@string/title_collection_widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="barqsoft.footballscores.ACTION_DATA_UPDATED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/collection_appwidget_info"/>
+        </receiver>
+        <service android:name=".widget.CollectionWidgetRemoteViewsService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"
+            android:exported="false"/>
     </application>
 
 </manifest>

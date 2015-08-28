@@ -34,6 +34,8 @@
     </string>
     <string name="widget_text">This is a widget probably.</string>
     <string name="title_static_widget">Match Widget</string>
+    <string name="title_collection_widget">Day Widget</string>
+
 
     <string name="widget_prefs_name">barqsoft.footballscores.widget</string>
     <string name="pref_match_id_widget_">match_id_widget_</string>
