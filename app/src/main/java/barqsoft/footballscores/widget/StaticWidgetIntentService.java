@@ -47,44 +47,39 @@ public class StaticWidgetIntentService extends IntentService {
         // Perform this loop procedure for each Today widget
         for (int appWidgetId : appWidgetIds) {
             int layoutId = R.layout.static_widget;
-            int matchId = StaticAppWidgetConfigure.getIdFromSharedPrefs(this,appWidgetId);
+            String[] matchId = {Integer.toString(
+                    StaticAppWidgetConfigure.getIdFromSharedPrefs(this, appWidgetId))};
+            Log.v(LOG_TAG,"matchId for "+ appWidgetId + ": " + matchId);
 
             RemoteViews views = new RemoteViews(getPackageName(), layoutId);
 
-            Uri scoreWithDateUri = DatabaseContract.scores_table.buildScoreWithDate();
+            Uri scoreWithDateUri = DatabaseContract.scores_table.buildScoreWithId();
 
-            Date fragmentdate = new Date(System.currentTimeMillis()+((-2)*86400000));
-            SimpleDateFormat mformat = new SimpleDateFormat("yyyy-MM-dd");
-
-            String[] date = {mformat.format(fragmentdate)};
-            Cursor data = getContentResolver().query(scoreWithDateUri, null, "ASC",date, null);
+            Cursor data = getContentResolver().query(scoreWithDateUri, null, "ASC",matchId, null);
 
             Log.v(LOG_TAG,"data columns: " + data.getColumnCount() );
 
             if (data == null) {
                 Log.v(LOG_TAG, "data is null");
-                return;
+                continue;
             }
             if (!data.moveToFirst()) {
                 Log.v(LOG_TAG, "data cannot move to first");
                 data.close();
-                return;
+                continue;
             }
 
             Log.v(LOG_TAG,"home_name: " + data.getString(COL_HOME));
             views.setTextViewText(R.id.home_name, data.getString(COL_HOME));
             views.setTextViewText(R.id.away_name,data.getString(COL_AWAY));
             views.setTextViewText(R.id.data_textview,data.getString(COL_MATCHTIME));
-            views.setTextViewText(R.id.score_textview,Utilies.getScores(data.getInt(COL_HOME_GOALS), data.getInt(COL_AWAY_GOALS)));
+            views.setTextViewText(R.id.score_textview, Utilies.getScores(data.getInt(COL_HOME_GOALS), data.getInt(COL_AWAY_GOALS)));
+            views.setImageViewResource(R.id.home_crest, Utilies.getTeamCrestByTeamName(
+                    data.getString(COL_HOME)));
+            views.setImageViewResource(R.id.away_crest, Utilies.getTeamCrestByTeamName(
+                    data.getString(COL_AWAY)));
 
-//            mHolder.match_id = data.getDouble(COL_ID);
-//            mHolder.home_crest.setImageResource(Utilies.getTeamCrestByTeamName(
-//                    data.getString(COL_HOME)));
-//            mHolder.away_crest.setImageResource(Utilies.getTeamCrestByTeamName(
-//                    data.getString(COL_AWAY)
-
-                    //Now set all of the components in each view to contain up to date data
-//                    views.setTextViewText(R.id.home_name, "TEXT CHANGED!");
+            data.close();
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }

@@ -164,7 +164,7 @@ public class StaticAppWidgetConfigure extends Activity {
                         context.getString(R.string.widget_prefs_name),MODE_PRIVATE).edit();
         editor.putInt(context.getString(R.string.pref_match_id_widget_) + appWidgetId, id);
         editor.apply();
-        Log.v(LOG_TAG,"Match_id prefs: " + getIdFromSharedPrefs(context,appWidgetId));
+        Log.v(LOG_TAG,"Match_id prefs for " + appWidgetId + ": " + getIdFromSharedPrefs(context,appWidgetId));
     }
 
     static int getIdFromSharedPrefs(Context context, int appWidgetId) {
