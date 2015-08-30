@@ -1,6 +1,7 @@
 package barqsoft.footballscores.widget;
 
 import android.app.IntentService;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import barqsoft.footballscores.DatabaseContract;
+import barqsoft.footballscores.MainActivity;
 import barqsoft.footballscores.R;
 import barqsoft.footballscores.Utilies;
 
@@ -52,6 +54,12 @@ public class StaticWidgetIntentService extends IntentService {
             Log.v(LOG_TAG,"matchId for "+ appWidgetId + ": " + matchId);
 
             RemoteViews views = new RemoteViews(getPackageName(), layoutId);
+
+            // Create an Intent to launch MainActivity
+            Intent mainActivityIntent = new Intent(this, MainActivity.class);
+            PendingIntent mainActivityIntentPendingIntent
+                    = PendingIntent.getActivity(this, 0, mainActivityIntent, 0);
+            views.setOnClickPendingIntent(R.id.widget, mainActivityIntentPendingIntent);
 
             Uri scoreWithDateUri = DatabaseContract.scores_table.buildScoreWithId();
 
