@@ -39,6 +39,6 @@
             android:gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="The list is empty"/>
+            android:text="There are no matches today"/>
     </FrameLayout>
 </LinearLayout>
