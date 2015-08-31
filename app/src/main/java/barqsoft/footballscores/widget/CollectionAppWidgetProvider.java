@@ -37,6 +37,7 @@ public class CollectionAppWidgetProvider extends AppWidgetProvider {
             }
 
             // TODO set an intent on the list items
+            // not sure where to make it go
             views.setEmptyView(R.id.widget_list, R.id.widget_empty);
 
             // Tell the AppWidgetManager to perform an update on the current app widget
