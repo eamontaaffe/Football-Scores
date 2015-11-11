@@ -32,20 +32,21 @@ Here is the [starting code](https://www.udacity.com/api/nodes/4276988636/supplem
 > - Add a widget to your app experience.
 > - Leverage the functionality of a library in your app.
 
+> #### User Feedback for Football Scores:
 
-### UI Review Node
+> Your Boss says:
+> "It's important to always use an API key when you can. Get your own API key and put it into the strings.xml file."
 
-> Lyla says:
-> “This app is starting to shape up but it feels a bit off in quite a few places. I can't put finger on it but it feels odd.”
+> Stefan says:
+> “This app took me a while to figure out, but it is totally worth it! It helps me keep track of when to be glued to my TV, and keeps me up to date when I’m not.”
 
-> Jay says:
-> “Is the text supposed to be so wonky and unreadable? It is not accessible to those of us without perfect vision."
+> Moizeé says:
+> “I have trouble navigating and understanding this app. It is not accessible to those of us without perfect vision."
 
-> Kagure says:
-> “The color scheme is really sad and I shouldn't feel sad.”
-
+> Jennie says:
+> “I like the functionality of this app, but I hate having to open it up every time I want to check for a new game. Can’t you put something on the home screen for us?”
 
 ### Project Evaluation
 
-The proect is marked according to this [rubric](https://docs.google.com/document/d/1DLP2mj_xYYb01NfQLHbNke4zgNH67bntN0wkc-w_lVY/pub?embedded=true).
+The proect is marked according to this [rubric](https://docs.google.com/document/d/1jKnb7xLcdBZl1cmVYRVkX_fkpUzmUmKtrazhpfJx-zk/pub?embedded=true).
 
