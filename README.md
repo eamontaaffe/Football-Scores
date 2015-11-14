@@ -3,7 +3,7 @@
 ## Installation
 In order to run this app, you need to get [your own API key](football-data.org) and add it to the 'api_keys.xml' file int the res/values directory.
 
-## Project 5: Super Duo
+## Project 3: Super Duo
 This is a project for Udacity's [Android Developers Nanodegree](https://www.udacity.com/course/android-developer-nanodegree--nd801).
 
 This project specifically tests the knowleged learnt in the course [Advanced Android App Development](https://www.udacity.com/course/advanced-android-app-development--ud855).
